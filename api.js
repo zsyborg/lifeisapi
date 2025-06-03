@@ -41,4 +41,92 @@ app.get('/v1/pics', async (req, res) => {
   }
 });
 
+
+app.get('/v1/country', async (req, res) => {
+  try {
+    const result = await sql.query('SELECT * FROM dbo.Country');
+    res.json(result.recordset);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ message: 'Error fetching data' });
+  }
+});
+
+
+
+app.get('/v1/customerrole', async (req, res) => {
+  try {
+    const result = await sql.query('SELECT * FROM dbo.CustomerRole');
+    res.json(result.recordset);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ message: 'Error fetching data' });
+  }
+});
+
+
+app.get('/v1/discounts', async (req, res) => {
+  try {
+    const result = await sql.query('SELECT * FROM dbo.Discount');
+    res.json(result.recordset);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ message: 'Error fetching data' });
+  }
+});
+
+
+
+
+
+app.get('/v1/discountproducts', async (req, res) => {
+  try {
+    const result = await sql.query('SELECT * FROM dbo.Discount_AppliedToProducts');
+    res.json(result.recordset);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ message: 'Error fetching data' });
+  }
+});
+
+
+app.get('/v1/genealogy', async (req, res) => {
+  try {
+    const result = await sql.query('SELECT * FROM dbo.Genealogy_Mst');
+    res.json(result.recordset);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ message: 'Error fetching data' });
+  }
+});
+
+
+
+app.get('/v1/incentive', async (req, res) => {
+  try {
+    const result = await sql.query('SELECT * FROM dbo.Incentive_Trn');
+    res.json(result.recordset);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ message: 'Error fetching data' });
+  }
+});
+
+
+
+
+
+app.get('/v1/genealogy', async (req, res) => {
+  try {
+    const result = await sql.query('SELECT * FROM dbo.Genealogy_Mst');
+    res.json(result.recordset);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ message: 'Error fetching data' });
+  }
+});
+
+
+
+
 module.exports = app;
