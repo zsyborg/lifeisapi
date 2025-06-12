@@ -62,9 +62,6 @@ app.get('/v1/categoryimg', async (req, res) => {
 });
 
 
-});
-
-
 app.get('/v1/genealogy', async (req, res) => {
   try {
     const result = await sql.query('SELECT * FROM dbo.Genealogy_Mst');
