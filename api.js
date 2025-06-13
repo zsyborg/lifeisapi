@@ -99,4 +99,88 @@ app.get('/v1/genealogy', async (req, res) => {
 });
 
 
+app.get('/v1/offerachiever', async (req, res) => {
+  try {
+    const result = await sql.query('SELECT * FROM dbo.AchieversListAward_Dtls');
+    res.json(result.recordset);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ message: 'Error fetching data' });
+  }
+});
+
+
+app.get('/v1/customer/:memid', async (req, res) => {
+  try {
+    const memid = req.params.memid;
+    const result = await sql.query`SELECT * FROM dbo.Customer WHERE Id = ${memid}`;
+    res.json(result.recordset);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ message: 'Error fetching data' });
+  }
+});
+
+app.get('/v1/customeraddress_map/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const result = await sql.query`SELECT * FROM dbo.CustomerAddresses WHERE Customer_Id = ${id}`;
+    res.json(result.recordset);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ message: 'Error fetching data' });
+  }
+});
+
+app.get('/v1/customeraddress/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const result = await sql.query`SELECT * FROM dbo.Address WHERE Id = ${id}`;
+    res.json(result.recordset);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ message: 'Error fetching data' });
+  }
+});
+
+
+app.get('/v1/customerpassword/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const result = await sql.query`SELECT * FROM dbo.CustomerPassword WHERE CustomerId = ${id}`;
+    res.json(result.recordset);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ message: 'Error fetching data' });
+  }
+});
+
+
+
+app.get('/v1/userroles/', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const result = await sql.query`SELECT * FROM dbo.CustomerRole`;
+    res.json(result.recordset);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ message: 'Error fetching data' });
+  }
+});
+
+
+
+app.get('/v1/scrap/', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const result = await sql.query`SELECT TOP (40) * FROM dbo.CustomerSubscription`;
+    res.json(result.recordset);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ message: 'Error fetching data' });
+  }
+});
+
+
+
 module.exports = app;
